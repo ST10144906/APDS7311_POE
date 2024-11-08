@@ -1,0 +1,228 @@
+.dashboard-container {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #b7bed3;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dashboard-content {
+  text-align: center;
+}
+
+.welcome-message {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #1d1d1d;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+}
+
+.card {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-button {
+  padding: 10px 15px;
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.dashboard-button:hover {
+  background-color: #0056b3; 
+}
+
+.transaction-area {
+  background-color: #f8f9fa; /* Light background for the transaction area */
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 400px; /* Set a maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Space above the transaction area */
+}
+
+.transaction-list {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack transactions vertically */
+  gap: 15px; /* Space between transactions */
+  align-items: center; /* Center items horizontally */
+}
+
+.transaction-card {
+  background-color: #e0e0e0; /* Use the same background as cards */
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%; /* Full width of the container */
+  max-width: 500px; /* Limit the width of the transaction card */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.transaction-card:hover {
+  transform: translateY(-5px);
+}
+
+.transaction-label {
+  font-weight: bold; /* Bold labels for clarity */
+  color: #333; /* Ensure labels have a clear color */
+}
+
+.transaction-value {
+  margin-bottom: 10px; /* Space between each transaction value */
+}
+
+/*admin css*/
+
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.transaction-table th {
+  background-color: #f4f4f4;
+}
+
+.transaction-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.verified {
+  color: green;
+}
+
+.not-verified {
+  color: red;
+}
+
+.verify-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.verify {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.unverify {
+  background-color: #f44336;
+  color: white;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
