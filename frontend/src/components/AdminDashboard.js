@@ -51,11 +51,11 @@ const AdminDashboard = () => {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h2>Admin Dashboard</h2>
+        <h2>Employee Dashboard</h2>
         <div className="profile-menu">
           <div className="profile-icon" onClick={handleProfileClick}>
             <img
-              src="/path/to/profile-icon.png" // Replace with actual profile image path or use an avatar
+              src="/path/to/profile-icon.png" 
               alt="Profile"
               className="profile-image"
             />
