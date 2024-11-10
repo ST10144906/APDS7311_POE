@@ -4,39 +4,49 @@ const User = require('../models/User');
 const router = express.Router();
 
 // Regular expressions
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const idNumberRegex = /^\d{13,}$/;
-const accountNumberRegex = /^[0-9]{10}$/;
-const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
+const idNumberRegex = /^\d{13,}$/; // ID must be at least 13 digits, numbers only
+const accountNumberRegex =  /^[0-9]{10}$/; // Account number must be 10 digits, numbers only
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/; // At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
 
-// REGISTER a new customer
+// REGISTER a new user
 router.post('/register', async (req, res) => {
-  const { name, email, password, idNumber, accountNumber, role } = req.body;
+  const { name, email, password, idNumber, accountNumber} = req.body;
 
-  if (role && role !== 'customer') {
-    return res.status(403).json({ msg: 'Only customer registration is allowed' });
+  // Validate email format
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ msg: 'Invalid email format' });
   }
 
-  // Validate inputs
-  if (!emailRegex.test(email)) return res.status(400).json({ msg: 'Invalid email format' });
-  if (!idNumberRegex.test(idNumber)) return res.status(400).json({ msg: 'ID number must be at least 13 digits' });
-  if (!accountNumberRegex.test(accountNumber)) return res.status(400).json({ msg: 'Account number must be 10 digits' });
-  if (!passwordRegex.test(password)) return res.status(400).json({ msg: 'Password requirements not met' });
+  // Validate ID number length and format
+  if (!idNumberRegex.test(idNumber)) {
+    return res.status(400).json({ msg: 'ID number must be at least 13 digits long and contain only numbers' });
+  }
+
+  // Validate account number format
+  if (!accountNumberRegex.test(accountNumber)) {
+    return res.status(400).json({ msg: 'Account number must be exactly 10 digits long and contain only numbers' });
+    }
+
+  // Validate password complexity
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({ msg: 'Password must be at least 8 characters long, include 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character' });
+  }
 
   try {
-    // Check if user exists
-    let user = await User.findOne({ email: email.trim() });
+    // Check if user already exists
+    let user = await User.findOne({ email });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
-    // Create new user with customer role
-    user = new User({ name, email, password, idNumber, accountNumber, role: 'customer' });
+    // Create new user
+    user = new User({ name, email, password, idNumber, accountNumber });
 
-    // Hash password
+    // Hash the password  
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
-    res.status(201).json({ msg: 'Customer registered successfully' });
+    res.status(201).json({ msg: 'User registered successfully' });
   } catch (err) {
     res.status(500).send('Server error');
   }
@@ -49,7 +59,7 @@ router.post('/login', async (req, res) => {
   if (!emailRegex.test(email)) return res.status(400).json({ msg: 'Invalid email format' });
 
   try {
-    const user = await User.findOne({ email: email.trim() });
+    const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
 
     const isMatch = await bcrypt.compare(password, user.password);

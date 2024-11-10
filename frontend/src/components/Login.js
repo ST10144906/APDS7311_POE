@@ -61,6 +61,10 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <p>
+        Already have an account?{' '}
+        <lable style={{ color: 'blue' }} onClick={() => navigate('/register')}>Login Now</lable>
+      </p>
       <button className="back-button" onClick={goBackToHome}>Back to Home</button>
     </div>
   );
