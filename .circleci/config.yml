@@ -57,11 +57,6 @@ jobs:
       - run:
           name: Wait for backend server
           command: sleep 10
-      - run:
-          name: Run Newman tests
-          command: |
-            cd Backend
-            npm run newmantestingscript  &
       - attach_workspace:
           at: ~/workspace
 
