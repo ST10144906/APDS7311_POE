@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
 
   try {
     // Check if user exists
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ email: email.trim() });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
     // Create new user with customer role
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
   if (!emailRegex.test(email)) return res.status(400).json({ msg: 'Invalid email format' });
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.trim() });
     if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
 
     const isMatch = await bcrypt.compare(password, user.password);
