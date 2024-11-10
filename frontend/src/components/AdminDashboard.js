@@ -59,13 +59,9 @@ const AdminDashboard = () => {
               alt="Profile"
               className="profile-image"
             />
-            <span className="profile-name">Admin</span>
+            <span className="profile-name">Employee</span>
+            <button onClick={handleLogout} className="profile-name.logout">Logout</button>
           </div>
-          {showDropdown && (
-            <div className="dropdown-menu">
-              <button onClick={handleLogout} className="dropdown-item">Logout</button>
-            </div>
-          )}
         </div>
       </header>
 

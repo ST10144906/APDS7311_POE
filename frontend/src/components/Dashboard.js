@@ -29,6 +29,10 @@ const Dashboard = ({ isAdmin }) => {
     navigate('/payment-logs');
   };
 
+  const handleLogout = () => {
+    navigate('/login'); 
+  };
+
   return (
     <div className="dashboard-container">
       <h2 className="dashboard-title">Dashboard</h2>
@@ -39,6 +43,7 @@ const Dashboard = ({ isAdmin }) => {
           {isAdmin && (
             <button className="dashboard-button" onClick={handleLogsClick}>Review Payment Logs</button>
           )}
+          <button className="dashboard-button" onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
