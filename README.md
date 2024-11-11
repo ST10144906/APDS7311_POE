@@ -1,9 +1,6 @@
-# Customer Portal & Employee International Payments Portal
-
-## Overview
+#International Payments Portal
 
 This project includes two portals: one for customers and one for employees. It allows customers to register, log in, and process international payments securely. The app is built with **Express.js** for the backend, **React.js** for the frontend, and **MongoDB** for data storage. The customer portal lets customers create and manage their payments, while the employee portal provides administrative functions to manage and verify transactions.
-
 
 ## Prerequisites
 
@@ -104,12 +101,9 @@ npm install express mongoose cors dotenv helmet express-rate-limit express-sessi
 - Log in an existing user.
 - The Dashboard provides users with an overview of key information, including recent activities, notifications, and quick links to essential features. It displays personalized data such as service requests, events, and user stats. The dashboard is designed for easy navigation, with role-based access to different functionalities and an intuitive layout for both customers and employees.
 
-# Testing 
-
-- This repository utilizes continuous integration (CI) with **CircleCI** for testing the backend of the project.
-- **SonarQube Analysis:** Used for static code analysis to check for code quality, bugs and vulnerabilities.
-
-
+## PipeLine 
+- [CircleCi](https://circleci.com/)
+- [SonarQube](https://sonarcloud.io/)
 
 ## Security Considerations
 ### The app implements several security features to protect user data and prevent attacks:
