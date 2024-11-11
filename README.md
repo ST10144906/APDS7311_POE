@@ -106,43 +106,9 @@ npm install express mongoose cors dotenv helmet express-rate-limit express-sessi
 
 # Testing 
 
-This repository utilizes continuous integration (CI) with **CircleCI** for testing the backend of the project. The following describes the testing setup, including SonarQube analysis and API testing with Newman.
+- This repository utilizes continuous integration (CI) with **CircleCI** for testing the backend of the project.
+- **SonarQube Analysis:** Used for static code analysis to check for code quality, bugs and vulnerabilities.
 
-## Testing Overview
-
-The testing pipeline involves two primary jobs: **SonarQube Analysis** and **Newman Test Setup**.
-
-### 1. **SonarQube Analysis (`sonarqube`)**
-
-The **SonarQube** job performs a static code analysis to evaluate code quality and security issues. It uses the `sonarsource/sonar-scanner-cli` Docker image to run the SonarQube scanner.
-
-#### Steps:
-- **Checkout:** Pulls the latest code from the repository.
-- **Install Dependencies:** Installs the necessary backend dependencies using `npm install`.
-- **Start Server in Background:** Starts the backend server using `npm run dev &` (in the background).
-- **Attach Workspace:** Ensures that the workspace (files) created during the job are available to subsequent jobs.
-- **SonarQube Analysis:**
-  - Runs `sonar-scanner` with the following configurations:
-    - **Project Key & Organization:** Uses environment variables `SONAR_PROJECT_KEY` and `SONAR_ORG`.
-    - **Exclusions:** Excludes `android/` and `ios/` directories from the analysis.
-    - **Login & Branch Information:** Authenticates using `SONAR_TOKEN`, specifies the current branch (`SONAR_BRANCH`), and identifies the SonarQube project.
-    - **Source Files:** The backend source code is scanned for issues, excluding non-relevant file types such as C, C++, or Objective-C files.
-
-### 2. **Newman Test Setup (`newmantest`)**
-
-The **Newman Test Setup** job prepares the environment for running API tests using Newman. The tests (likely Postman collection tests) are set up but not fully executed in the provided configuration.
-
-#### Steps:
-- **Checkout:** Pulls the latest code from the repository.
-- **Install Dependencies:** Installs the necessary backend dependencies using `npm install`.
-- **Start Backend Server:** Starts the backend server in the background using `npm run dev &`.
-- **Wait for Backend Server:** Waits for **10 seconds** to ensure that the server is up and running before any tests are executed.
-- **Attach Workspace:** Makes the workspace available for future jobs and testing.
-
-### Summary of Testing:
-- **SonarQube Analysis:** Used for static code analysis to check for code quality, bugs, vulnerabilities, and code smells.
-- **Backend Server Setup:** Ensures the backend server is running and available for testing.
-- **Newman Test Setup:** Prepares for running API tests, although the actual invocation of the tests is not included in the current configuration.
 
 
 ## Security Considerations
@@ -158,7 +124,7 @@ The **Newman Test Setup** job prepares the environment for running API tests usi
 
 ## Technology Stack
 - Frontend: React.js, React Router
-- Backend: Express.js, Node.js, MongoDB
+- Backend: Express.js, Node.js
 - Database: MongoDB
 - Authentication: bcryptjs, express-session, JSON Web Tokens (JWT)
 - Security: helmet, xss-clean, rate-limiting, express-brute
