@@ -12,6 +12,8 @@ const session = require('express-session');
 const xssClean = require('xss-clean');
 const ExpressBrute = require('express-brute');
 const morgan = require('morgan');
+const https = require('https');
+const fs = require('fs');
 
 dotenv.config();
 
@@ -105,7 +107,11 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-
+  // SSL Certificates for HTTPS
+const options = {
+  key: fs.readFileSync('keys/privateKey.pem'),  // Path to private key
+  cert: fs.readFileSync('keys/certificate.pem') // Path to certificate
+};
 
 // Routes
 app.use('/api/auth', authRoutes);
