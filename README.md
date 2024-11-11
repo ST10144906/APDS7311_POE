@@ -1,20 +1,29 @@
-# Customer Portal
+# Customer Portal & Employee International Payments Portal
 
-A simple customer portal for login and registration.
+## Overview
 
-## Clone Repository
+This project includes two portals: one for customers and one for employees. It allows users to register, log in, and process international payments securely. The app is built with **Express.js** for the backend, **React.js** for the frontend, and **MongoDB** for data storage. The customer portal lets users register, log in, and manage their payments, while the employee portal provides administrative functions to manage and verify transactions.
 
-To get started with the project, you'll need to clone the repository to your local machine. Follow these steps:
 
-1. Open your preferred code editor (e.g., Visual Studio Code).
-2. At the top menu, click on **File**.
-3. Select **New Window** to open a new window in your editor.
-4. Click on **Clone Git Repository**.
-5. Enter the following command in your terminal:
+## Prerequisites
 
+Before starting the project, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (LTS version)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+- [MongoDB](https://www.mongodb.com/) (MongoDB Atlas or local setup)
+- [VS Code](https://code.visualstudio.com/))
+
+
+
+## Setup Instructions
+
+### Backend Setup
+
+1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/ST10144906/APDS7321-POE.git
-   ```
+
    
 ## Setup Backend
 
@@ -78,6 +87,11 @@ To set up the frontend of the application, follow these steps:
 
    The frontend application should now be running on [http://localhost:3000](http://localhost:3000).
 
+## Running the Application
+- The backend server should be running on http://localhost:5000.
+- The frontend application should be running on http://localhost:3000.
+- Ensure both servers are running simultaneously to interact with the app.
+
 
 ## Note: install the following dependecies for protecting against atacks
 
@@ -85,3 +99,20 @@ To set up the frontend of the application, follow these steps:
 npm install express mongoose cors dotenv helmet express-rate-limit express-session xss-clean express-brute morgan bcryptjs
 ```
 
+## Security Considerations
+### The app implements several security features to protect user data and prevent attacks:
+
+*Helmet:* Adds security-related HTTP headers to prevent various types of attacks (e.g., clickjacking, XSS).
+*Rate Limiting:* Limits the number of requests a user can make in a given time frame, helping to prevent brute force attacks.
+*Input Sanitization:* Utilizes xss-clean to sanitize user input and prevent XSS attacks.
+*Password Hashing:* Passwords are hashed using bcrypt for secure storage.
+*CSRF Protection:* Cross-Site Request Forgery protection to prevent unauthorized requests.
+*Secure Cookies:* Uses httpOnly cookies to store session tokens, preventing client-side access.
+*Session Management:* Uses session cookies to maintain user sessions, with security configurations based on environment.
+
+## Technology Stack
+- Frontend: React.js, React Router
+- Backend: Express.js, Node.js, MongoDB
+- Database: MongoDB
+- Authentication: bcryptjs, express-session, JSON Web Tokens (JWT)
+- Security: helmet, xss-clean, rate-limiting, express-brute
