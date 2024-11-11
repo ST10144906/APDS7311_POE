@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
+import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const [transactions, setTransactions] = useState([]);
