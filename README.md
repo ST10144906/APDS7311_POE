@@ -12,7 +12,7 @@ Before starting the project, make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (LTS version)
 - [npm](https://www.npmjs.com/) (Node Package Manager)
 - [MongoDB](https://www.mongodb.com/) (MongoDB Atlas or local setup)
-- [VS Code](https://code.visualstudio.com/))
+- [VS Code](https://code.visualstudio.com/)
 
 
 
@@ -102,13 +102,13 @@ npm install express mongoose cors dotenv helmet express-rate-limit express-sessi
 ## Security Considerations
 ### The app implements several security features to protect user data and prevent attacks:
 
-*Helmet:* Adds security-related HTTP headers to prevent various types of attacks (e.g., clickjacking, XSS).
-*Rate Limiting:* Limits the number of requests a user can make in a given time frame, helping to prevent brute force attacks.
-*Input Sanitization:* Utilizes xss-clean to sanitize user input and prevent XSS attacks.
-*Password Hashing:* Passwords are hashed using bcrypt for secure storage.
-*CSRF Protection:* Cross-Site Request Forgery protection to prevent unauthorized requests.
-*Secure Cookies:* Uses httpOnly cookies to store session tokens, preventing client-side access.
-*Session Management:* Uses session cookies to maintain user sessions, with security configurations based on environment.
+- Helmet:Adds security-related HTTP headers to prevent various types of attacks (e.g., clickjacking, XSS).
+- Rate Limiting: Limits the number of requests a user can make in a given time frame, helping to prevent brute force attacks.
+- Input Sanitization: Utilizes xss-clean to sanitize user input and prevent XSS attacks.
+- Password Hashing: Passwords are hashed using bcrypt for secure storage.
+- CSRF Protection: Cross-Site Request Forgery protection to prevent unauthorized requests.
+- Secure Cookies: Uses httpOnly cookies to store session tokens, preventing client-side access.
+- Session Management: Uses session cookies to maintain user sessions, with security configurations based on environment.
 
 ## Technology Stack
 - Frontend: React.js, React Router
