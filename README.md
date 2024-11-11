@@ -1,9 +1,6 @@
-# Customer Portal & Employee International Payments Portal
-
-## Overview
+#International Payments Portal
 
 This project includes two portals: one for customers and one for employees. It allows customers to register, log in, and process international payments securely. The app is built with **Express.js** for the backend, **React.js** for the frontend, and **MongoDB** for data storage. The customer portal lets customers create and manage their payments, while the employee portal provides administrative functions to manage and verify transactions.
-
 
 ## Prerequisites
 
@@ -99,6 +96,15 @@ To set up the frontend of the application, follow these steps:
 npm install express mongoose cors dotenv helmet express-rate-limit express-session xss-clean express-brute morgan bcryptjs
 ```
 
+## How to use
+- Register a new user (customer or employee).
+- Log in an existing user.
+- The Dashboard provides users with an overview of key information, including recent activities, notifications, and quick links to essential features. It displays personalized data such as service requests, events, and user stats. The dashboard is designed for easy navigation, with role-based access to different functionalities and an intuitive layout for both customers and employees.
+
+## PipeLine 
+- [CircleCi](https://circleci.com/)
+- [SonarQube](https://sonarcloud.io/)
+
 ## Security Considerations
 ### The app implements several security features to protect user data and prevent attacks:
 
@@ -112,7 +118,14 @@ npm install express mongoose cors dotenv helmet express-rate-limit express-sessi
 
 ## Technology Stack
 - Frontend: React.js, React Router
-- Backend: Express.js, Node.js, MongoDB
+- Backend: Express.js, Node.js
 - Database: MongoDB
 - Authentication: bcryptjs, express-session, JSON Web Tokens (JWT)
 - Security: helmet, xss-clean, rate-limiting, express-brute
+
+## Contributors
+- Cael Botha-Richards (ST10108175) (Team Leader) 
+- Darius Dylan Govender (ST10144906)
+- Jordan Farrell (ST10069637)  
+- Jaden Perumal (ST10204523)  
+- Ryan Taylor (ST10063915) 
