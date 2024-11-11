@@ -4,12 +4,6 @@
 
 This project includes two portals: one for customers and one for employees. It allows customers to register, log in, and process international payments securely. The app is built with **Express.js** for the backend, **React.js** for the frontend, and **MongoDB** for data storage. The customer portal lets customers create and manage their payments, while the employee portal provides administrative functions to manage and verify transactions.
 
-## Team 
-- Darius Dylan Govender (ST10144906)
-- Jaden Peramul (ST10204523)
-- Jordan Farrell (ST10069637)
-- Cael Botha-Richards (ST10108175)
-- Ryan Taylor (ST10063915)
 
 ## Prerequisites
 
@@ -105,6 +99,52 @@ To set up the frontend of the application, follow these steps:
 npm install express mongoose cors dotenv helmet express-rate-limit express-session xss-clean express-brute morgan bcryptjs
 ```
 
+## How to use
+- Register a new user (customer or employee).
+- Log in an existing user.
+- The Dashboard provides users with an overview of key information, including recent activities, notifications, and quick links to essential features. It displays personalized data such as service requests, events, and user stats. The dashboard is designed for easy navigation, with role-based access to different functionalities and an intuitive layout for both customers and employees.
+
+# Testing 
+
+This repository utilizes continuous integration (CI) with **CircleCI** for testing the backend of the project. The following describes the testing setup, including SonarQube analysis and API testing with Newman.
+
+## Testing Overview
+
+The testing pipeline involves two primary jobs: **SonarQube Analysis** and **Newman Test Setup**.
+
+### 1. **SonarQube Analysis (`sonarqube`)**
+
+The **SonarQube** job performs a static code analysis to evaluate code quality and security issues. It uses the `sonarsource/sonar-scanner-cli` Docker image to run the SonarQube scanner.
+
+#### Steps:
+- **Checkout:** Pulls the latest code from the repository.
+- **Install Dependencies:** Installs the necessary backend dependencies using `npm install`.
+- **Start Server in Background:** Starts the backend server using `npm run dev &` (in the background).
+- **Attach Workspace:** Ensures that the workspace (files) created during the job are available to subsequent jobs.
+- **SonarQube Analysis:**
+  - Runs `sonar-scanner` with the following configurations:
+    - **Project Key & Organization:** Uses environment variables `SONAR_PROJECT_KEY` and `SONAR_ORG`.
+    - **Exclusions:** Excludes `android/` and `ios/` directories from the analysis.
+    - **Login & Branch Information:** Authenticates using `SONAR_TOKEN`, specifies the current branch (`SONAR_BRANCH`), and identifies the SonarQube project.
+    - **Source Files:** The backend source code is scanned for issues, excluding non-relevant file types such as C, C++, or Objective-C files.
+
+### 2. **Newman Test Setup (`newmantest`)**
+
+The **Newman Test Setup** job prepares the environment for running API tests using Newman. The tests (likely Postman collection tests) are set up but not fully executed in the provided configuration.
+
+#### Steps:
+- **Checkout:** Pulls the latest code from the repository.
+- **Install Dependencies:** Installs the necessary backend dependencies using `npm install`.
+- **Start Backend Server:** Starts the backend server in the background using `npm run dev &`.
+- **Wait for Backend Server:** Waits for **10 seconds** to ensure that the server is up and running before any tests are executed.
+- **Attach Workspace:** Makes the workspace available for future jobs and testing.
+
+### Summary of Testing:
+- **SonarQube Analysis:** Used for static code analysis to check for code quality, bugs, vulnerabilities, and code smells.
+- **Backend Server Setup:** Ensures the backend server is running and available for testing.
+- **Newman Test Setup:** Prepares for running API tests, although the actual invocation of the tests is not included in the current configuration.
+
+
 ## Security Considerations
 ### The app implements several security features to protect user data and prevent attacks:
 
@@ -122,3 +162,10 @@ npm install express mongoose cors dotenv helmet express-rate-limit express-sessi
 - Database: MongoDB
 - Authentication: bcryptjs, express-session, JSON Web Tokens (JWT)
 - Security: helmet, xss-clean, rate-limiting, express-brute
+
+## Contributors
+- Cael Botha-Richards (ST10108175) (Team Leader) 
+- Darius Dylan Govender (ST10144906)
+- Jordan Farrell (ST10069637)  
+- Jaden Perumal (ST10204523)  
+- Ryan Taylor (ST10063915) 
