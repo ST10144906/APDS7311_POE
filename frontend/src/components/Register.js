@@ -1,8 +1,7 @@
-// frontend/src/components/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Auth.css'; // Ensure you have a CSS file for styling
+import './Auth.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,17 +16,33 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted"); 
     try {
+      console.log("Sending request..."); 
+      
       const res = await axios.post('http://localhost:5000/api/auth/register', formData);
-      alert(res.data.msg);
-      navigate('/login'); // Redirect to login after successful registration
+
+      console.log("Response received:", res); 
+      
+      navigate('/login');
     } catch (err) {
-      alert('Error: ' + err.response.data.msg);
+      console.error("Error in axios request:", err); 
+
+      if (err.response && err.response.data && err.response.data.errors) {
+        console.log("Detailed error messages:", err.response.data.errors); // Log specific errors
+        const errorMessages = err.response.data.errors.map(error => `${error.field}: ${error.msg}`).join('\n');
+        alert('Error:\n' + errorMessages);
+      } else if (err.response && err.response.data && err.response.data.msg) {
+        alert('Error: ' + err.response.data.msg);
+      } else {
+        alert('An unexpected error occurred.');
+      }
     }
   };
+  
 
   const goBackToHome = () => {
-    navigate('/'); // Navigate to home page
+    navigate('/');
   };
 
   return (
@@ -38,7 +53,7 @@ const Register = () => {
           <label>Name:</label>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Username"
             value={formData.name}
             onChange={e => setFormData({ ...formData, name: e.target.value })}
             required
@@ -88,7 +103,7 @@ const Register = () => {
       </form>
       <p>
         Already have an account?{' '}
-        <lable style={{ color: 'blue' }} onClick={() => navigate('/login')}>Login Now</lable>
+        <span style={{ color: 'blue', cursor: 'pointer' }} onClick={() => navigate('/login')}>Login Now</span>
       </p>
       
       <button className="back-button" onClick={goBackToHome}>Back to Home</button>

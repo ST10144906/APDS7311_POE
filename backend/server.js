@@ -105,18 +105,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Example of input validation for a route
-app.post('/api/auth/register', [
-  body('username').isAlphanumeric().trim().isLength({ min: 3 }),
-  body('email').isEmail(),
-  body('password').isLength({ min: 6 }),
-], (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-  // Handle registration logic here
-});
+
 
 // Routes
 app.use('/api/auth', authRoutes);
