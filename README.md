@@ -4,6 +4,12 @@
 
 This project includes two portals: one for customers and one for employees. It allows customers to register, log in, and process international payments securely. The app is built with **Express.js** for the backend, **React.js** for the frontend, and **MongoDB** for data storage. The customer portal lets customers create and manage their payments, while the employee portal provides administrative functions to manage and verify transactions.
 
+## Team 
+- Darius Dylan Govender (ST10144906)
+- Jaden Peramul (ST10204523)
+- Jordan Farrell (ST10069637)
+- Cael Botha-Richards (ST10108175)
+- Ryan Taylor (ST10063915)
 
 ## Prerequisites
 
